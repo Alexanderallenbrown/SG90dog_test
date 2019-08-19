@@ -26,7 +26,13 @@ def setHips(angle):
 
 def setLegs(angle):
     duty = a / 180 * angle + b
-    for ch in range(0,8):
+    duty2 = a/180*(-angle+180)+b
+    print (-angle+90)
+    for ch in range(0,2):
+        pwm.setDuty(ch,duty)
+    for ch in range(2,6):
+        pwm.setDuty(ch,duty2)
+    for ch in range(6,8):
         pwm.setDuty(ch,duty)
 
 def setDirection(direction):
@@ -42,7 +48,7 @@ tstart = time.time()
 
 while True:
     t = time.time()-tstart
-    alegs = 90+15*sin(t*3.14)
+    alegs = 90+15*sin(t*2*3.14)
     setLegs(alegs)
     setHips(90)
     time.sleep(0.01)

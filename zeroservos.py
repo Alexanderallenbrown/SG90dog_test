@@ -41,9 +41,9 @@ setup()
 tstart = time.time()
 
 while True:
-    t = time.time()-tstart
-    alegs = 90+15*sin(t*3.14)
-    setLegs(alegs)
+    #t = time.time()-tstart
+    #alegs = 90+15*sin(t*3.14)
+    setLegs(90)
     setHips(90)
     time.sleep(0.01)
 

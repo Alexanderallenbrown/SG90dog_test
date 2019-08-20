@@ -16,16 +16,14 @@ class Leg:
         self.rawAngles(xrel,zrel)
         #for right femur, 90 degrees represents thetaf of 135, zero represents thetaf of 180
         #therefore, effective offsets can be calculated as
-        if self.side==1:
-            off_femur = -(self.servozero_f+self.thf_offset)
-            off_tibia = self.servozero_t-self.tht_offset
-            self.thf = -(self.thf_raw + off_femur)-pi
-            self.tht = self.tht_raw + off_tibia
-        else:
-            off_femur = self.servozero-self.thf_offset
-            off_tibia = -(self.servozero_f+self.thf_offset)
-            self.thf = (self.thf_raw + off_femur)
-            self.tht = -(self.tht_raw + off_tibia)-pi
+        off_femur = -(self.servozero_f+self.thf_offset)
+        off_tibia = self.servozero_t-self.tht_offset
+        self.thf = -(self.thf_raw + off_femur)-pi
+        self.tht = self.tht_raw + off_tibia
+        if self.side==2:
+            self.thf = pi-self.thf
+            self.tht = pi-self.tht
+            
 
         
          

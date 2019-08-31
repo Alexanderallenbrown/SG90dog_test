@@ -18,6 +18,13 @@ def setup():
     pwm = PWM(bus, i2c_address)
     pwm.setFreq(fPWM)
 
+def zeroBot():
+    duty = a/180*90+b
+    for ch in range(0,16):
+        pwm.setDuty(ch,duty)
+    time.sleep(1)
+
+#zeroBot()
 
 def setHips(angle):
     duty = a / 180 * angle + b
@@ -32,6 +39,8 @@ def setLeg(femur,tibia,ch):
 
 
 setup()
+
+zeroBot()
 
 frLeg = Leg(side=1)
 flLeg = Leg(side=2)
@@ -56,5 +65,5 @@ while True:
     setLeg(rrfem,rrtib,6)
     p+=1
     print(p)
-    time.sleep(.01)
+    time.sleep(.001)
 

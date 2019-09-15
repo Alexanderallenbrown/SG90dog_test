@@ -65,7 +65,7 @@ def setHips(angle):
 def setLeg(femur,tibia,ch):
     if not isnan(femur):
         fduty = a / 180 * femur + b
-         pwm.setDuty(ch,fduty)
+        pwm.setDuty(ch,fduty)
     else:
         print "femur nan!"
     if not isnan(tibia):
@@ -79,7 +79,7 @@ setup()
 
 zeroBot()
 
-standheight = 4.5
+standheight = 4.25
 frLeg = Leg(side=1,zeroz=-.0254*standheight)
 flLeg = Leg(side=2,zeroz=-.0254*standheight)
 lrLeg = Leg(side=2,zeroz=-.0254*(standheight-.2))

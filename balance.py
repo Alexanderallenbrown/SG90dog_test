@@ -116,7 +116,7 @@ while True:
         poffset_right = -poffset_left
 
         roffset_front= tan(roll)*.08
-        roffset_rear = -roffset_left
+        roffset_rear = -roffset_front
         #print pitch
 
         fr,fl,lr,rr = walker.getPos(p)

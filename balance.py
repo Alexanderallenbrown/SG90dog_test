@@ -102,10 +102,10 @@ while True:
         poffset_right = -poffset_left
 
         fr,fl,lr,rr = walker.getPos(p)
-        flfem,fltib = flLeg.servoAngles(fl[0]+poffset_left,fl[1])
-        frfem,frtib = frLeg.servoAngles(fr[0]+poffset_right,fr[1])
-        lrfem,lrtib = lrLeg.servoAngles(lr[0]+poffset_left,lr[1])
-        rrfem,rrtib = rrLeg.servoAngles(rr[0]+poffset_right,rr[1])
+        flfem,fltib = flLeg.servoAngles(fl[0],fl[1]+poffset_left)
+        frfem,frtib = frLeg.servoAngles(fr[0],fr[1]+poffset_right)
+        lrfem,lrtib = lrLeg.servoAngles(lr[0],lr[1]+poffset_left)
+        rrfem,rrtib = rrLeg.servoAngles(rr[0],rr[1]+poffset_right)
         #set each leg
         setLeg(frfem,frtib,0)
         setLeg(flfem,fltib,2)

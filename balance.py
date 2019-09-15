@@ -115,7 +115,7 @@ while True:
         poffset_left = tan(pitch)*.045
         poffset_right = -poffset_left
 
-        roffset_front= tan(roll)*.08
+        roffset_front= tan(-roll)*.08
         roffset_rear = -roffset_front
         #print pitch
 

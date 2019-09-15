@@ -114,13 +114,16 @@ while True:
         #assume that half width of robot is 5cm
         poffset_left = tan(pitch)*.045
         poffset_right = -poffset_left
-        print pitch
+
+        roffset_front= tan(roll)*.08
+        roffset_rear = -roffset_left
+        #print pitch
 
         fr,fl,lr,rr = walker.getPos(p)
-        flfem,fltib = flLeg.servoAngles(fl[0],fl[1]+poffset_left)
-        frfem,frtib = frLeg.servoAngles(fr[0],fr[1]+poffset_right)
-        lrfem,lrtib = lrLeg.servoAngles(lr[0],lr[1]+poffset_left)
-        rrfem,rrtib = rrLeg.servoAngles(rr[0],rr[1]+poffset_right)
+        flfem,fltib = flLeg.servoAngles(fl[0],fl[1]+poffset_left+roffset_front)
+        frfem,frtib = frLeg.servoAngles(fr[0],fr[1]+poffset_right+roffset_front)
+        lrfem,lrtib = lrLeg.servoAngles(lr[0],lr[1]+poffset_left+roffset_rear)
+        rrfem,rrtib = rrLeg.servoAngles(rr[0],rr[1]+poffset_right+roffset_rear)
         #set each leg
         setLeg(frfem,frtib,0)
         setLeg(flfem,fltib,2)

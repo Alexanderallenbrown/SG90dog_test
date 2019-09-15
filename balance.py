@@ -98,7 +98,7 @@ while True:
         #move right legts up and left down to make a positive angle
         #calculate pitch offsets
         #assume that half width of robot is 5cm
-        poffset_left = tan(pitch)*.05
+        poffset_left = tan(-pitch)*.05
         poffset_right = -poffset_left
 
         fr,fl,lr,rr = walker.getPos(p)

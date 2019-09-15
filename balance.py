@@ -73,10 +73,11 @@ setup()
 
 zeroBot()
 
-frLeg = Leg(side=1)
-flLeg = Leg(side=2)
-lrLeg = Leg(side=2)
-rrLeg = Leg(side=1)
+standheight = 4.5
+frLeg = Leg(side=1,zeroz=-.0254*standheight)
+flLeg = Leg(side=2,zeroz=-.0254*standheight)
+lrLeg = Leg(side=2,zeroz=-.0254*(standheight+.2))
+rrLeg = Leg(side=1,zeroz=-.0254*standheight)
 
 walker = Walk(stride_length=0.0,stride_height=0.00)
 
@@ -93,8 +94,10 @@ while True:
     #    print("walking!")
     if state==2:
         heading, roll, pitch = bno.read_euler()
-        roll = roll*3.14/180
-        pitch = pitch*3.14/180
+        if not isnan(roll):
+            roll = roll*3.14/180
+        if not isnan(pitch):
+            pitch = pitch*3.14/180
         #move right legts up and left down to make a positive angle
         #calculate pitch offsets
         #assume that half width of robot is 5cm

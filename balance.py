@@ -107,9 +107,9 @@ while True:
         #move right legts up and left down to make a positive angle
         #calculate pitch offsets
         #assume that half width of robot is 5cm
-        poffset_left = tan(pitch)*.045
+        poffset_left = 0#tan(pitch)*.045
         poffset_right = -poffset_left
-        print poffset_left
+        print pitch
 
         fr,fl,lr,rr = walker.getPos(p)
         flfem,fltib = flLeg.servoAngles(fl[0],fl[1]+poffset_left)

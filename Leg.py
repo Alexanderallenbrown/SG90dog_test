@@ -22,7 +22,7 @@ class Leg:
         self.tht = self.tht_raw + off_tibia
         if self.side==2:
             self.thf = pi-self.thf
-            self.tht = pi-self.tht
+            self.tht = self.tht
             
 
         

@@ -109,6 +109,7 @@ while True:
         #assume that half width of robot is 5cm
         poffset_left = tan(pitch)*.045
         poffset_right = -poffset_left
+        print poffset_left
 
         fr,fl,lr,rr = walker.getPos(p)
         flfem,fltib = flLeg.servoAngles(fl[0],fl[1]+poffset_left)

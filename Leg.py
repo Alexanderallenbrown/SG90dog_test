@@ -35,9 +35,17 @@ class Leg:
         z = zrel+self.zeroz
         d = sqrt(z**2+x**2)
         thleg = arctan2(z,x)
-        thlt = arccos((d**2+self.lf**2-self.lt**2)/(2*d*self.lf))
+        opthlt = (d**2+self.lf**2-self.lt**2)/(2*d*self.lf)
+        if(abs(opthlt)>=1):
+            opthlt=1*opthlt/abs(opthlt)
+            print "warning...thlt out of bounds for xrel: "+str(xrel)+" and zrel: "+str(zrel)
+        thlt = arccos(opthlt)
         self.thf_raw = thleg+thlt
-        thd = arccos((self.lt**2+self.lf**2-d**2)/(2*self.lt*self.lf))
+        opthd = (self.lt**2+self.lf**2-d**2)/(2*self.lt*self.lf)
+        if(abs(opthd)>=1):
+            opthd=1*opthd/abs(opthd)
+            print "warning... thd out of bounds for xrel: "+str(xrel)+" and zrel: "+str(zrel)
+        thd = arccos(opthd)
         self.tht_raw = pi-thd
         return self.thf_raw,self.tht_raw
 

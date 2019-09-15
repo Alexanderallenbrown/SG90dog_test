@@ -63,10 +63,16 @@ def setHips(angle):
         pwm.setDuty(ch,duty)
 
 def setLeg(femur,tibia,ch):
-    fduty = a / 180 * femur + b
-    tduty = a/180*tibia+b
-    pwm.setDuty(ch,fduty)
-    pwm.setDuty(ch+1,tduty)
+    if not isnan(femur):
+        fduty = a / 180 * femur + b
+         pwm.setDuty(ch,fduty)
+    else:
+        print "femur nan!"
+    if not isnan(tibia):
+        tduty = a/180*tibia+b
+        pwm.setDuty(ch+1,tduty)
+    else:
+        print "tibia nan!"
 
 
 setup()

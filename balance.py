@@ -79,7 +79,7 @@ setup()
 
 zeroBot()
 
-standheight = 4.25
+standheight = 4.5
 frLeg = Leg(side=1,zeroz=-.0254*standheight)
 flLeg = Leg(side=2,zeroz=-.0254*standheight)
 lrLeg = Leg(side=2,zeroz=-.0254*(standheight-.2))
@@ -107,7 +107,7 @@ while True:
         #move right legts up and left down to make a positive angle
         #calculate pitch offsets
         #assume that half width of robot is 5cm
-        poffset_left = tan(pitch)*.05
+        poffset_left = tan(pitch)*.045
         poffset_right = -poffset_left
 
         fr,fl,lr,rr = walker.getPos(p)

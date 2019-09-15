@@ -82,7 +82,7 @@ zeroBot()
 standheight = 3.5
 frLeg = Leg(side=1,zeroz=-.0254*standheight,zerox=0)
 flLeg = Leg(side=2,zeroz=-.0254*standheight,zerox=0)
-lrLeg = Leg(side=2,zeroz=-.0254*(standheight-.2),zerox=0)
+lrLeg = Leg(side=2,zeroz=-.0254*(standheight+.2),zerox=0)
 rrLeg = Leg(side=1,zeroz=-.0254*standheight,zerox=0)
 # frLeg = Leg(side=1)
 # flLeg = Leg(side=2)

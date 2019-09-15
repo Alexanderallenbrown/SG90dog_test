@@ -125,5 +125,5 @@ while True:
         #print(p)
     #if state==2:
     #    zeroBot()
-    time.sleep(.01)
+    time.sleep(.05)
 

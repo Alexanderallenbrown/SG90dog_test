@@ -19,10 +19,10 @@ class Leg:
         off_femur = -(self.servozero_f+self.thf_offset)
         off_tibia = self.servozero_t-self.tht_offset
         self.thf = -(self.thf_raw + off_femur)-pi
-        self.tht = self.tht_raw + off_tibia
+        self.tht = -self.tht_raw + off_tibia
         if self.side==2:
             self.thf = pi-self.thf
-            self.tht = self.tht
+            self.tht = pi-self.tht
             
 
         

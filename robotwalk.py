@@ -1,3 +1,5 @@
+
+#import keyboard
 from smbus import SMBus
 from PCA9685 import PWM
 import time
@@ -5,6 +7,8 @@ from math import sin
 from Walk import Walk
 from Leg import Leg
 from numpy import *
+
+state = 2
 
 fPWM = 50
 i2c_address = 0x40 # (standard) adapt to your module
@@ -22,7 +26,7 @@ def zeroBot():
     duty = a/180*90+b
     for ch in range(0,16):
         pwm.setDuty(ch,duty)
-    time.sleep(1)
+    time.sleep(.001)
 
 #zeroBot()
 
@@ -53,17 +57,27 @@ p = 0
 
 while True:
     setHips(90)
-    fr,fl,lr,rr = walker.getPos(p)
-    flfem,fltib = flLeg.servoAngles(fl[0],fl[1])
-    frfem,frtib = frLeg.servoAngles(fr[0],fr[1])
-    lrfem,lrtib = lrLeg.servoAngles(lr[0],lr[1])
-    rrfem,rrtib = rrLeg.servoAngles(rr[0],rr[1])
-    #set each leg
-    setLeg(frfem,frtib,0)
-    setLeg(flfem,fltib,2)
-    setLeg(lrfem,lrtib,4)
-    setLeg(rrfem,rrtib,6)
-    p+=1
-    print(p)
-    time.sleep(.001)
+
+    #if keyboard.is_pressed('1'):
+    #    state=1
+    #    print("standing")
+    #if keyboard.is_pressed('2'):
+    #    state = 2
+    #    print("walking!")
+    if state==2:
+        fr,fl,lr,rr = walker.getPos(p)
+        flfem,fltib = flLeg.servoAngles(fl[0],fl[1])
+        frfem,frtib = frLeg.servoAngles(fr[0],fr[1])
+        lrfem,lrtib = lrLeg.servoAngles(lr[0],lr[1])
+        rrfem,rrtib = rrLeg.servoAngles(rr[0],rr[1])
+        #set each leg
+        setLeg(frfem,frtib,0)
+        setLeg(flfem,fltib,2)
+        setLeg(lrfem,lrtib,4)
+        setLeg(rrfem,rrtib,6)
+        p-=3
+        #print(p)
+    #if state==2:
+    #    zeroBot()
+    time.sleep(.01)
 

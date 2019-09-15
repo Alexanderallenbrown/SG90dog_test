@@ -8,13 +8,13 @@ from math import sin
 
 fPWM = 50
 i2c_address = 0x40 # (standard) adapt to your module
-channel = 0 # adapt to your wiring
+channel = 3 # adapt to your wiring
 a = 8.5 # adapt to your servo
 b = 2  # adapt to your servo
 
 def setup():
     global pwm
-    bus = SMBus(1) # Raspberry Pi revision 2
+    bus = SMBus(3) # Raspberry Pi revision 2
     pwm = PWM(bus, i2c_address)
     pwm.setFreq(fPWM)
 

@@ -51,7 +51,7 @@ flLeg = Leg(side=2)
 lrLeg = Leg(side=2)
 rrLeg = Leg(side=1)
 
-walker = Walk(stride_height=-0.01,stride_length =- .03)
+walker = Walk(stride_height=-0.01,stride_length =- .04)
 
 p = 0
 
@@ -66,10 +66,10 @@ while True:
     #    print("walking!")
     if state==2:
         fr,fl,lr,rr = walker.getPos(p)
-        flfem,fltib = flLeg.servoAngles(fl[0],fl[1]-.005)
-        frfem,frtib = frLeg.servoAngles(fr[0],fr[1]-.005)
-        lrfem,lrtib = lrLeg.servoAngles(lr[0],lr[1]+.01)
-        rrfem,rrtib = rrLeg.servoAngles(rr[0],rr[1]+.01)
+        flfem,fltib = flLeg.servoAngles(fl[0],fl[1]+.01)
+        frfem,frtib = frLeg.servoAngles(fr[0],fr[1]+.01)
+        lrfem,lrtib = lrLeg.servoAngles(lr[0],lr[1]+.02)
+        rrfem,rrtib = rrLeg.servoAngles(rr[0],rr[1]+.02)
         #set each leg
         setLeg(frfem,frtib,0)
         setLeg(flfem,fltib,2)

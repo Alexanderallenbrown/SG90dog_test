@@ -90,7 +90,7 @@ rrLeg = Leg(side=1,zeroz=-.0254*standheight,zerox=0)
 # rrLeg = Leg(side=1)
 
 
-walker = Walk(stride_length=0.01,stride_height=0.01)
+walker = Walk(stride_length=0.03,stride_height=0.01)
 
 p = 0
 
@@ -129,7 +129,7 @@ while True:
         setLeg(flfem,fltib,2)
         setLeg(lrfem,lrtib,4)
         setLeg(rrfem,rrtib,6)
-        p+=3
+        p-=2
         #print(p)
     #if state==2:
     #    zeroBot()

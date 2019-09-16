@@ -66,16 +66,16 @@ while True:
     #    print("walking!")
     if state==2:
         fr,fl,lr,rr = walker.getPos(p)
-        flfem,fltib = flLeg.servoAngles(fl[0],fl[1]-.01)
-        frfem,frtib = frLeg.servoAngles(fr[0],fr[1]-.01)
-        lrfem,lrtib = lrLeg.servoAngles(lr[0],lr[1])
-        rrfem,rrtib = rrLeg.servoAngles(rr[0],rr[1])
+        flfem,fltib = flLeg.servoAngles(fl[0],fl[1]-.005)
+        frfem,frtib = frLeg.servoAngles(fr[0],fr[1]-.005)
+        lrfem,lrtib = lrLeg.servoAngles(lr[0],lr[1]+.01)
+        rrfem,rrtib = rrLeg.servoAngles(rr[0],rr[1]+.01)
         #set each leg
         setLeg(frfem,frtib,0)
         setLeg(flfem,fltib,2)
         setLeg(lrfem,lrtib,4)
         setLeg(rrfem,rrtib,6)
-        p+=3
+        p+=1
         #print(p)
     #if state==2:
     #    zeroBot()

@@ -3,7 +3,7 @@ from matplotlib.pyplot import *
 
 
 class Leg:
-    def __init__(self,lf=.044,lt=.071,tht_offset = (76.8)*pi/180.0,thf_offset =(135)*pi/180.0,zerox=-.0254*1,zeroz=-.0254*3.5,side=1,servozero_f=90,servozero_t=90):
+    def __init__(self,lf=.044,lt=.071,tht_offset = (76.8)*pi/180.0,thf_offset =(135)*pi/180.0,zerox=-.0254*1,zeroz=-.0254*3.58,side=1,servozero_f=90,servozero_t=90):
         self.servozero_f = servozero_f*pi/180#degrees to rads. servos meant to rest at mid position.
         self.servozero_t = servozero_t*pi/180
         self.lf,self.lt,self.tht_offset,self.thf_offset,self.zerox,self.zeroz,self.side=lf,lt,tht_offset,thf_offset,zerox,zeroz,side

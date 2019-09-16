@@ -75,7 +75,7 @@ while True:
         setLeg(flfem,fltib,2)
         setLeg(lrfem,lrtib,4)
         setLeg(rrfem,rrtib,6)
-        p-=1
+        p-=3
         #print(p)
     #if state==2:
     #    zeroBot()

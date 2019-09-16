@@ -46,10 +46,10 @@ setup()
 
 zeroBot()
 
-frLeg = Leg(side=1)
-flLeg = Leg(side=2)
-lrLeg = Leg(side=2)
-rrLeg = Leg(side=1)
+frLeg = Leg(side=1,zeroz=-4*.0254)
+flLeg = Leg(side=2,zeroz=-4*.0254)
+lrLeg = Leg(side=2,zeroz=-3.3*.0254)
+rrLeg = Leg(side=1,zeroz=-3.3*0254)
 
 walker = Walk(stride_height=-0.01,stride_length =- .03)
 

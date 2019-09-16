@@ -11,16 +11,16 @@ class Walk:
         self.P = array([0, 12.5,25,37.5,50,62.5,75,87.5,100])
         # front right leg
         self.FR_x = array([0,-self.stride_length/4,-self.stride_length/2,-self.stride_length/2,0,self.stride_length/2,self.stride_length/2,self.stride_length/4,0])
-        self.FR_y = -array([0,0,0,self.stride_height,self.stride_height,self.stride_height,0,0,0])
+        self.FR_y = array([0,0,0,self.stride_height,self.stride_height,self.stride_height,0,0,0])
         # left rear leg
         self.LR_x = array([self.stride_length/2,self.stride_length/4,0,-self.stride_length/4,-self.stride_length/2,-self.stride_length/2,0,self.stride_length/2,self.stride_length/2])
-        self.LR_y = -array([0,0,0,0,0,self.stride_height,self.stride_height,self.stride_height,0])
+        self.LR_y = array([0,0,0,0,0,self.stride_height,self.stride_height,self.stride_height,0])
         # left front leg
         self.FL_x = array([0,self.stride_length/2,self.stride_length/2,self.stride_length/4,0,-self.stride_length/4,-self.stride_length/2,-self.stride_length/2,0])
-        self.FL_y = -array([self.stride_height,self.stride_height,0,0,0,0,0,self.stride_height,self.stride_height])
+        self.FL_y = array([self.stride_height,self.stride_height,0,0,0,0,0,self.stride_height,self.stride_height])
         # right rear leg
         self.RR_x = array([-self.stride_length/2,-self.stride_length/2,0,self.stride_length/2,self.stride_length/2,self.stride_length/4,0,-self.stride_length/4,-self.stride_length/2])
-        self.RR_y = -array([0,self.stride_height,self.stride_height,self.stride_height,0,0,0,0,0])
+        self.RR_y = array([0,self.stride_height,self.stride_height,self.stride_height,0,0,0,0,0])
 
     def getPos(self,p):
         pp = p%100

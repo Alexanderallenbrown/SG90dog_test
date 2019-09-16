@@ -18,7 +18,7 @@ b = 2  # adapt to your servo
 
 def setup():
     global pwm
-    bus = SMBus(1) # Raspberry Pi revision 2
+    bus = SMBus(3) # Raspberry Pi revision 2
     pwm = PWM(bus, i2c_address)
     pwm.setFreq(fPWM)
 
@@ -51,7 +51,7 @@ flLeg = Leg(side=2)
 lrLeg = Leg(side=2)
 rrLeg = Leg(side=1)
 
-walker = Walk()
+walker = Walk(stride_height=0.03,stride_length = .02)
 
 p = 0
 
@@ -75,7 +75,7 @@ while True:
         setLeg(flfem,fltib,2)
         setLeg(lrfem,lrtib,4)
         setLeg(rrfem,rrtib,6)
-        p-=3
+        p+=3
         #print(p)
     #if state==2:
     #    zeroBot()

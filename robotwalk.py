@@ -51,7 +51,7 @@ flLeg = Leg(side=2)
 lrLeg = Leg(side=2)
 rrLeg = Leg(side=1)
 
-walker = Walk(stride_height=-0.01,stride_length =.01)
+walker = Walk(stride_height=0.01,stride_length =.01)
 
 p = 0
 

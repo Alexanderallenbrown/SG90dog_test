@@ -90,7 +90,7 @@ rrLeg = Leg(side=1)
 # rrLeg = Leg(side=1)
 
 
-walker = Walk(stride_length=0.02,stride_height=-0.015)
+walker = Walk(stride_length=0.02,stride_height=-0.01)
 
 p = 0
 

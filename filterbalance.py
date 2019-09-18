@@ -121,7 +121,7 @@ while True:
             froll += dt/ftau*(roll-froll)
         if not isnan(pitch):
             pitch = pitch*3.14/180
-            fpitch+=dt/tau*(pitch-fpitch)
+            fpitch+=dt/ftau*(pitch-fpitch)
         #move right legts up and left down to make a positive angle
         #calculate pitch offsets
         #assume that half width of robot is 5cm

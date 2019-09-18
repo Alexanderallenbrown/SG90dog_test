@@ -10,7 +10,7 @@ from numpy import *
 
 import BNO055
 
-ftau = .1;
+ftau = .2;
 fpitch = 0;
 froll = 0;
 

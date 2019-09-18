@@ -66,8 +66,8 @@ while True:
     #    print("walking!")
     if state==2:
         fr,fl,lr,rr = walker.getPos(p)
-        flfem,fltib = flLeg.servoAngles(fl[0],fl[1]+.01)
-        frfem,frtib = frLeg.servoAngles(fr[0],fr[1]+.01)
+        flfem,fltib = flLeg.servoAngles(fl[0],fl[1]-.01)
+        frfem,frtib = frLeg.servoAngles(fr[0],fr[1]-.01)
         lrfem,lrtib = lrLeg.servoAngles(lr[0],lr[1]+.01)
         rrfem,rrtib = rrLeg.servoAngles(rr[0],rr[1]+.01)
         #set each leg

@@ -80,17 +80,17 @@ setup()
 zeroBot()
 
 standheight = 3.5
-frLeg = Leg(side=1,zeroz=-.0254*standheight,zerox=0)
-flLeg = Leg(side=2,zeroz=-.0254*standheight,zerox=0)
-lrLeg = Leg(side=2,zeroz=-.0254*(standheight+.2),zerox=0)
-rrLeg = Leg(side=1,zeroz=-.0254*standheight,zerox=0)
+frLeg = Leg(side=1)
+flLeg = Leg(side=2)
+lrLeg = Leg(side=2)
+rrLeg = Leg(side=1)
 # frLeg = Leg(side=1)
 # flLeg = Leg(side=2)
 # lrLeg = Leg(side=2)
 # rrLeg = Leg(side=1)
 
 
-walker = Walk(stride_length=0.03,stride_height=0.01)
+walker = Walk(stride_length=0.02,stride_height=-0.015)
 
 p = 0
 
@@ -120,10 +120,10 @@ while True:
         #print pitch
 
         fr,fl,lr,rr = walker.getPos(p)
-        flfem,fltib = flLeg.servoAngles(fl[0],fl[1]+poffset_left+roffset_front)
-        frfem,frtib = frLeg.servoAngles(fr[0],fr[1]+poffset_right+roffset_front)
-        lrfem,lrtib = lrLeg.servoAngles(lr[0],lr[1]+poffset_left+roffset_rear)
-        rrfem,rrtib = rrLeg.servoAngles(rr[0],rr[1]+poffset_right+roffset_rear)
+        flfem,fltib = flLeg.servoAngles(fl[0],-.01+fl[1]+poffset_left+roffset_front)
+        frfem,frtib = frLeg.servoAngles(fr[0],-.01+fr[1]+poffset_right+roffset_front)
+        lrfem,lrtib = lrLeg.servoAngles(lr[0],.01+lr[1]+poffset_left+roffset_rear)
+        rrfem,rrtib = rrLeg.servoAngles(rr[0],.01+rr[1]+poffset_right+roffset_rear)
         #set each leg
         setLeg(frfem,frtib,0)
         setLeg(flfem,fltib,2)

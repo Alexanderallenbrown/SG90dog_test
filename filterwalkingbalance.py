@@ -10,7 +10,13 @@ from numpy import *
 
 import BNO055
 
+ftau = .2;
+fpitch = 0;
+froll = 0;
 
+told = time.time()-.1
+tnow = time.time()
+dt = tnow-told;
 
 bno = BNO055.BNO055(rst=None)
 if not bno.begin():
@@ -107,15 +113,17 @@ while True:
         heading, roll, pitch = bno.read_euler()
         if not isnan(roll):
             roll = roll*3.14/180
+            froll += dt/ftau*(roll-froll)
         if not isnan(pitch):
             pitch = pitch*3.14/180
+            fpitch+=dt/ftau*(pitch-fpitch)
         #move right legts up and left down to make a positive angle
         #calculate pitch offsets
         #assume that half width of robot is 5cm
-        poffset_left = tan(pitch)*.045
+        poffset_left = tan(fpitch)*.045
         poffset_right = -poffset_left
 
-        roffset_front= tan(-roll)*.08
+        roffset_front= tan(-froll)*.08
         roffset_rear = -roffset_front
         #print pitch
 

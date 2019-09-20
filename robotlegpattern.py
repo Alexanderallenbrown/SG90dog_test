@@ -6,6 +6,7 @@ import time
 from math import sin
 from Walk import Walk
 from Leg import Leg
+from Leg3d import Leg3d
 from numpy import *
 from legpattern import LegPattern
 

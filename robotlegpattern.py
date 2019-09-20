@@ -37,6 +37,14 @@ def setHips(angle):
     for ch in range(8,12):
         pwm.setDuty(ch,duty)
 
+def setLeg3d(femur,tibia,hip,ch,hipch):
+    fduty = a / 180 * femur + b
+    tduty = a/180*tibia+b
+    hduty = a/180*hip+b
+    pwm.setDuty(ch,fduty)
+    pwm.setDuty(ch+1,tduty)
+    pwm.setDuty(hipch,hduty)
+
 def setLeg(femur,tibia,ch):
     fduty = a / 180 * femur + b
     tduty = a/180*tibia+b
@@ -63,7 +71,7 @@ while True:
 
     fr = walker.getPos(p)
     frfem,frtib,frhip = frLeg.servoAngles(fr[0],fr[1],fr[2])
-    setLeg3d(frfem,frtib,frhip)
+    setLeg3d(frfem,frtib,frhip,0,8)
 
     p-=1
         #print(p)

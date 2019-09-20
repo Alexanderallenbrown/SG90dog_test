@@ -38,7 +38,7 @@ class Leg3d:
         z = zrel+self.zeroz
 
         zp = z/(cos(arctan2(yrel,z)))
-        self.thh = arctan2(yrel,z)
+        self.thh_raw = arctan(yrel/z)
 
 
         d = sqrt(zp**2+x**2)

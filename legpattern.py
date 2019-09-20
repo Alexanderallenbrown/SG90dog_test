@@ -5,7 +5,7 @@ from Leg3d import Leg3d
 
 
 class LegPattern:
-    def __init__(self,stride_length=0.03,stride_height=0.01):
+    def __init__(self,stride_length=0.01,stride_height=0.01):
         self.stride_height = stride_height
         self.stride_length = stride_length
         self.P = array([0, 12.5,25,37.5,50,62.5,75,87.5,100])

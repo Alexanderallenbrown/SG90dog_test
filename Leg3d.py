@@ -26,8 +26,10 @@ class Leg3d:
         self.thh = self.thh_raw + self.servozero_h
         if self.side==2:
             self.thf = pi-self.thf
-            self.tht = pi-self.tht
+            self.tht = self.tht
             self.thh = pi-self.thh
+        elif self.side==1:
+            self.tht = pi-self.tht
             
 
         

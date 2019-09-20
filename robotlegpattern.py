@@ -7,6 +7,7 @@ from math import sin
 from Walk import Walk
 from Leg import Leg
 from numpy import *
+from legpattern import LegPattern
 
 state = 2
 

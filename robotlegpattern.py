@@ -71,6 +71,7 @@ while True:
 
     fr = walker.getPos(p)
     frfem,frtib,frhip = frLeg.servoAngles(fr[0],fr[1],fr[2])
+    print frfem,frtib,frhip
     setLeg3d(frfem,frtib,frhip,0,8)
 
     p-=1

@@ -41,7 +41,7 @@ def setLeg3d(femur,tibia,hip,ch,hipch):
     fduty = a/180 * femur + b
     tduty = a/180*tibia+b
     hduty = a/180*hip+b
-    print fduty,tduty,hduty
+    # print fduty,tduty,hduty
     pwm.setDuty(ch,fduty)
     pwm.setDuty(ch+1,tduty)
     pwm.setDuty(hipch,hduty)

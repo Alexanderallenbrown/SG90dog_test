@@ -21,7 +21,7 @@ class Leg3d:
         #therefore, effective offsets can be calculated as
         off_femur = -(self.servozero_f+self.thf_offset)
         off_tibia = self.servozero_t-self.tht_offset
-        self.thf = -(self.thf_raw + off_femur)-pi
+        self.thf = -(self.thf_raw + off_femur)
         self.tht = self.tht_raw + off_tibia
         self.thh = self.thh_raw + self.servozero_h
         if self.side==2:

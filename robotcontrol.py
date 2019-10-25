@@ -41,7 +41,7 @@ print('Gyroscope ID:       0x{0:02X}\n'.format(gyro))
 
 
 #now walk state stuff.
-state = 2
+state = 1
 
 fPWM = 50
 i2c_address = 0x40 # (standard) adapt to your module

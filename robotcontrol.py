@@ -1,5 +1,5 @@
 
-import keyboard
+from pynput.keyboard import Key, Listener
 from smbus import SMBus
 from PCA9685 import PWM
 import time
@@ -81,51 +81,19 @@ def setLeg(femur,tibia,ch):
         print "tibia nan!"
 
 
-setup()
-
-zeroBot()
-
-standheight = 3.5
-frLeg = Leg(side=1)
-flLeg = Leg(side=2)
-lrLeg = Leg(side=2)
-rrLeg = Leg(side=1)
-# frLeg = Leg(side=1)
-# flLeg = Leg(side=2)
-# lrLeg = Leg(side=2)
-# rrLeg = Leg(side=1)
 
 
-walker = Walk(stride_length=0.02,stride_height=-0.01)
 
-p = 0
+def on_press(key):
+    print('{0} pressed'.format(
+        key))
 
-while True:
-    setHips(90)
-
-    if keyboard.is_pressed('1'):
-       state=1
-       print("standing")
-    if keyboard.is_pressed('2'):
-       state = 2
-       print("walking!")
-    if keyboard.is_pressed('3'):
-        state=3
-        print("backwards!")
-
-    # output of state machine
-    if(state==1):
-        zeroBot();
-    if state==2:
-        doWalk(1)
-    if state==3:
-        doWalk(-1)
-        #print(p)
-    #if state==2:
-    #    zeroBot()
-    time.sleep(.01)
-
-
+def on_release(key):
+    print('{0} release'.format(
+        key))
+    if key == Key.esc:
+        # Stop listener
+        return False
 
 def doWalk(dir):
         heading, roll, pitch = bno.read_euler()
@@ -159,3 +127,56 @@ def doWalk(dir):
             p-=2
         elif(dir==-1):
             p+=2
+
+
+
+
+##### MAIN PROGRAM #####
+with Listener(
+        on_press=on_press,
+        on_release=on_release) as listener:
+    listener.join()
+    
+setup()
+
+zeroBot()
+
+standheight = 3.5
+frLeg = Leg(side=1)
+flLeg = Leg(side=2)
+lrLeg = Leg(side=2)
+rrLeg = Leg(side=1)
+# frLeg = Leg(side=1)
+# flLeg = Leg(side=2)
+# lrLeg = Leg(side=2)
+# rrLeg = Leg(side=1)
+
+
+walker = Walk(stride_length=0.02,stride_height=-0.01)
+
+p = 0
+
+while True:
+    setHips(90)
+
+    # if keyboard.is_pressed('1'):
+    #    state=1
+    #    print("standing")
+    # if keyboard.is_pressed('2'):
+    #    state = 2
+    #    print("walking!")
+    # if keyboard.is_pressed('3'):
+    #     state=3
+    #     print("backwards!")
+
+    # output of state machine
+    if(state==1):
+        zeroBot();
+    if state==2:
+        doWalk(1)
+    if state==3:
+        doWalk(-1)
+        #print(p)
+    #if state==2:
+    #    zeroBot()
+    time.sleep(.01)

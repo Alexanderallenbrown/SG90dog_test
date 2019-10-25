@@ -157,5 +157,5 @@ def doWalk(dir):
         setLeg(rrfem,rrtib,6)
         if(dir==1):
             p-=2
-        else if(dir==-1):
+        elif(dir==-1):
             p+=2

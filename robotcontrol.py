@@ -128,7 +128,7 @@ while True:
 
 
 def doWalk(dir):
-    heading, roll, pitch = bno.read_euler()
+        heading, roll, pitch = bno.read_euler()
         if not isnan(roll):
             roll = roll*3.14/180
             froll += dt/ftau*(roll-froll)

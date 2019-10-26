@@ -86,37 +86,37 @@ def setLeg(femur,tibia,ch):
 
 def doWalk(dir):
     global froll, fpitch,walker
-        heading, roll, pitch = bno.read_euler()
-        if not isnan(roll):
-            roll = roll*3.14/180
-            froll += dt/ftau*(roll-froll)
-        if not isnan(pitch):
-            pitch = pitch*3.14/180
-            fpitch+=dt/ftau*(pitch-fpitch)
-        #move right legts up and left down to make a positive angle
-        #calculate pitch offsets
-        #assume that half width of robot is 5cm
-        poffset_left = tan(fpitch)*.045
-        poffset_right = -poffset_left
+    heading, roll, pitch = bno.read_euler()
+    if not isnan(roll):
+        roll = roll*3.14/180
+        froll += dt/ftau*(roll-froll)
+    if not isnan(pitch):
+        pitch = pitch*3.14/180
+        fpitch+=dt/ftau*(pitch-fpitch)
+    #move right legts up and left down to make a positive angle
+    #calculate pitch offsets
+    #assume that half width of robot is 5cm
+    poffset_left = tan(fpitch)*.045
+    poffset_right = -poffset_left
 
-        roffset_front= tan(-froll)*.08
-        roffset_rear = -roffset_front
-        #print pitch
+    roffset_front= tan(-froll)*.08
+    roffset_rear = -roffset_front
+    #print pitch
 
-        fr,fl,lr,rr = walker.getPos(p)
-        flfem,fltib = flLeg.servoAngles(fl[0],-.01+fl[1]+poffset_left+roffset_front)
-        frfem,frtib = frLeg.servoAngles(fr[0],-.01+fr[1]+poffset_right+roffset_front)
-        lrfem,lrtib = lrLeg.servoAngles(lr[0],.01+lr[1]+poffset_left+roffset_rear)
-        rrfem,rrtib = rrLeg.servoAngles(rr[0],.01+rr[1]+poffset_right+roffset_rear)
-        #set each leg
-        setLeg(frfem,frtib,0)
-        setLeg(flfem,fltib,2)
-        setLeg(lrfem,lrtib,4)
-        setLeg(rrfem,rrtib,6)
-        if(dir==1):
-            p-=2
-        elif(dir==-1):
-            p+=2
+    fr,fl,lr,rr = walker.getPos(p)
+    flfem,fltib = flLeg.servoAngles(fl[0],-.01+fl[1]+poffset_left+roffset_front)
+    frfem,frtib = frLeg.servoAngles(fr[0],-.01+fr[1]+poffset_right+roffset_front)
+    lrfem,lrtib = lrLeg.servoAngles(lr[0],.01+lr[1]+poffset_left+roffset_rear)
+    rrfem,rrtib = rrLeg.servoAngles(rr[0],.01+rr[1]+poffset_right+roffset_rear)
+    #set each leg
+    setLeg(frfem,frtib,0)
+    setLeg(flfem,fltib,2)
+    setLeg(lrfem,lrtib,4)
+    setLeg(rrfem,rrtib,6)
+    if(dir==1):
+        p-=2
+    elif(dir==-1):
+        p+=2
 
 
 

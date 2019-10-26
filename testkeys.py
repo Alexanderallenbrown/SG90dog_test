@@ -1,6 +1,6 @@
 import pygame
 pygame.init()
-pygame.display.set_mode()
+self._display_surf = pygame.display.set_mode(self.size, pygame.HWSURFACE | pygame.DOUBLEBUF)
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

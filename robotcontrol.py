@@ -1,5 +1,13 @@
 
-import sys, termios, tty, os, time
+import curses
+stdscr = curses.initscr()
+curses.cbreak()
+stdscr.keypad(1)
+
+stdscr.addstr(0,10,"Hit 'q' to quit")
+stdscr.refresh()
+
+key = ''
 
 from smbus import SMBus
 from PCA9685 import PWM
@@ -41,16 +49,7 @@ print('Magnetometer ID:    0x{0:02X}'.format(mag))
 print('Gyroscope ID:       0x{0:02X}\n'.format(gyro))
 
 
-def getch():
-    fd = sys.stdin.fileno()
-    old_settings = termios.tcgetattr(fd)
-    try:
-        tty.setraw(sys.stdin.fileno())
-        ch = sys.stdin.read(1)
- 
-    finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-    return ch
+
 
 def setup():
     global pwm
@@ -152,9 +151,11 @@ walker = Walk(stride_length=0.02,stride_height=-0.01)
 
 p = 0
 
-while True:
+while key != ord('q'):
     setHips(90)
-    key = getch()
+    key = stdscr.getch()
+    stdscr.addch(20,25,key)
+    stdscr.refresh()
     print key
 
     if key=='1':
@@ -178,3 +179,5 @@ while True:
     #if state==2:
     #    zeroBot()
     time.sleep(.01)
+
+curses.endwin()

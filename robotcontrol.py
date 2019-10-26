@@ -11,6 +11,35 @@ from numpy import *
 
 import BNO055
 
+ftau = 0.75;
+fpitch = 0;
+froll = 0;
+
+told = time.time()-.1
+tnow = time.time()
+dt = tnow-told;
+
+bno = BNO055.BNO055(rst=None)
+if not bno.begin():
+    raise RuntimeError('Failed to initialize BNO055! Is the sensor connected?')
+
+# Print system status and self test result.
+status, self_test, error = bno.get_system_status()
+print('System status: {0}'.format(status))
+print('Self test result (0x0F is normal): 0x{0:02X}'.format(self_test))
+# Print out an error if system status is in error mode.
+if status == 0x01:
+    print('System error: {0}'.format(error))
+    print('See datasheet section 4.3.59 for the meaning.')
+
+# Print BNO055 software revision and other diagnostic data.
+sw, bl, accel, mag, gyro = bno.get_revision()
+print('Software version:   {0}'.format(sw))
+print('Bootloader version: {0}'.format(bl))
+print('Accelerometer ID:   0x{0:02X}'.format(accel))
+print('Magnetometer ID:    0x{0:02X}'.format(mag))
+print('Gyroscope ID:       0x{0:02X}\n'.format(gyro))
+
 
 def getch():
     fd = sys.stdin.fileno()
@@ -92,35 +121,6 @@ def doWalk(dir):
 
 
 ##### MAIN PROGRAM #####
-
-ftau = 0.75;
-fpitch = 0;
-froll = 0;
-
-told = time.time()-.1
-tnow = time.time()
-dt = tnow-told;
-
-bno = BNO055.BNO055(rst=None)
-if not bno.begin():
-    raise RuntimeError('Failed to initialize BNO055! Is the sensor connected?')
-
-# Print system status and self test result.
-status, self_test, error = bno.get_system_status()
-print('System status: {0}'.format(status))
-print('Self test result (0x0F is normal): 0x{0:02X}'.format(self_test))
-# Print out an error if system status is in error mode.
-if status == 0x01:
-    print('System error: {0}'.format(error))
-    print('See datasheet section 4.3.59 for the meaning.')
-
-# Print BNO055 software revision and other diagnostic data.
-sw, bl, accel, mag, gyro = bno.get_revision()
-print('Software version:   {0}'.format(sw))
-print('Bootloader version: {0}'.format(bl))
-print('Accelerometer ID:   0x{0:02X}'.format(accel))
-print('Magnetometer ID:    0x{0:02X}'.format(mag))
-print('Gyroscope ID:       0x{0:02X}\n'.format(gyro))
 
 
 #now walk state stuff.

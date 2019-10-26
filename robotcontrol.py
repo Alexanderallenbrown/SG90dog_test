@@ -85,7 +85,7 @@ def setLeg(femur,tibia,ch):
 
 
 def doWalk(dir):
-    global froll, fpitch,walker
+    global froll, fpitch,walker,p,ftau
     heading, roll, pitch = bno.read_euler()
     if not isnan(roll):
         roll = roll*3.14/180

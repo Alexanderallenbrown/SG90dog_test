@@ -1,5 +1,6 @@
 
-from pynput.keyboard import Key, Listener
+import sys, termios, tty, os, time
+
 from smbus import SMBus
 from PCA9685 import PWM
 import time
@@ -9,6 +10,88 @@ from Leg import Leg
 from numpy import *
 
 import BNO055
+
+
+def getch():
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+        tty.setraw(sys.stdin.fileno())
+        ch = sys.stdin.read(1)
+ 
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    return ch
+
+def setup():
+    global pwm
+    bus = SMBus(3) # Raspberry Pi revision 2
+    pwm = PWM(bus, i2c_address)
+    pwm.setFreq(fPWM)
+
+def zeroBot():
+    duty = a/180*90+b
+    for ch in range(0,16):
+        pwm.setDuty(ch,duty)
+    time.sleep(.001)
+
+#zeroBot()
+
+def setHips(angle):
+    duty = a / 180 * angle + b
+    for ch in range(8,12):
+        pwm.setDuty(ch,duty)
+
+def setLeg(femur,tibia,ch):
+    if not isnan(femur):
+        fduty = a / 180 * femur + b
+        pwm.setDuty(ch,fduty)
+    else:
+        print "femur nan!"
+    if not isnan(tibia):
+        tduty = a/180*tibia+b
+        pwm.setDuty(ch+1,tduty)
+    else:
+        print "tibia nan!"
+
+
+def doWalk(dir):
+        heading, roll, pitch = bno.read_euler()
+        if not isnan(roll):
+            roll = roll*3.14/180
+            froll += dt/ftau*(roll-froll)
+        if not isnan(pitch):
+            pitch = pitch*3.14/180
+            fpitch+=dt/ftau*(pitch-fpitch)
+        #move right legts up and left down to make a positive angle
+        #calculate pitch offsets
+        #assume that half width of robot is 5cm
+        poffset_left = tan(fpitch)*.045
+        poffset_right = -poffset_left
+
+        roffset_front= tan(-froll)*.08
+        roffset_rear = -roffset_front
+        #print pitch
+
+        fr,fl,lr,rr = walker.getPos(p)
+        flfem,fltib = flLeg.servoAngles(fl[0],-.01+fl[1]+poffset_left+roffset_front)
+        frfem,frtib = frLeg.servoAngles(fr[0],-.01+fr[1]+poffset_right+roffset_front)
+        lrfem,lrtib = lrLeg.servoAngles(lr[0],.01+lr[1]+poffset_left+roffset_rear)
+        rrfem,rrtib = rrLeg.servoAngles(rr[0],.01+rr[1]+poffset_right+roffset_rear)
+        #set each leg
+        setLeg(frfem,frtib,0)
+        setLeg(flfem,fltib,2)
+        setLeg(lrfem,lrtib,4)
+        setLeg(rrfem,rrtib,6)
+        if(dir==1):
+            p-=2
+        elif(dir==-1):
+            p+=2
+
+
+
+
+##### MAIN PROGRAM #####
 
 ftau = 0.75;
 fpitch = 0;
@@ -49,94 +132,6 @@ channel = 0 # adapt to your wiring
 a = 8.5 # adapt to your servo
 b = 2  # adapt to your servo
 
-def setup():
-    global pwm
-    bus = SMBus(3) # Raspberry Pi revision 2
-    pwm = PWM(bus, i2c_address)
-    pwm.setFreq(fPWM)
-
-def zeroBot():
-    duty = a/180*90+b
-    for ch in range(0,16):
-        pwm.setDuty(ch,duty)
-    time.sleep(.001)
-
-#zeroBot()
-
-def setHips(angle):
-    duty = a / 180 * angle + b
-    for ch in range(8,12):
-        pwm.setDuty(ch,duty)
-
-def setLeg(femur,tibia,ch):
-    if not isnan(femur):
-        fduty = a / 180 * femur + b
-        pwm.setDuty(ch,fduty)
-    else:
-        print "femur nan!"
-    if not isnan(tibia):
-        tduty = a/180*tibia+b
-        pwm.setDuty(ch+1,tduty)
-    else:
-        print "tibia nan!"
-
-
-
-
-
-def on_press(key):
-    print('{0} pressed'.format(
-        key))
-
-def on_release(key):
-    print('{0} release'.format(
-        key))
-    if key == Key.esc:
-        # Stop listener
-        return False
-
-def doWalk(dir):
-        heading, roll, pitch = bno.read_euler()
-        if not isnan(roll):
-            roll = roll*3.14/180
-            froll += dt/ftau*(roll-froll)
-        if not isnan(pitch):
-            pitch = pitch*3.14/180
-            fpitch+=dt/ftau*(pitch-fpitch)
-        #move right legts up and left down to make a positive angle
-        #calculate pitch offsets
-        #assume that half width of robot is 5cm
-        poffset_left = tan(fpitch)*.045
-        poffset_right = -poffset_left
-
-        roffset_front= tan(-froll)*.08
-        roffset_rear = -roffset_front
-        #print pitch
-
-        fr,fl,lr,rr = walker.getPos(p)
-        flfem,fltib = flLeg.servoAngles(fl[0],-.01+fl[1]+poffset_left+roffset_front)
-        frfem,frtib = frLeg.servoAngles(fr[0],-.01+fr[1]+poffset_right+roffset_front)
-        lrfem,lrtib = lrLeg.servoAngles(lr[0],.01+lr[1]+poffset_left+roffset_rear)
-        rrfem,rrtib = rrLeg.servoAngles(rr[0],.01+rr[1]+poffset_right+roffset_rear)
-        #set each leg
-        setLeg(frfem,frtib,0)
-        setLeg(flfem,fltib,2)
-        setLeg(lrfem,lrtib,4)
-        setLeg(rrfem,rrtib,6)
-        if(dir==1):
-            p-=2
-        elif(dir==-1):
-            p+=2
-
-
-
-
-##### MAIN PROGRAM #####
-with Listener(
-        on_press=on_press,
-        on_release=on_release) as listener:
-    listener.join()
-    
 setup()
 
 zeroBot()
@@ -158,16 +153,17 @@ p = 0
 
 while True:
     setHips(90)
+    key = getch()
 
-    # if keyboard.is_pressed('1'):
-    #    state=1
-    #    print("standing")
-    # if keyboard.is_pressed('2'):
-    #    state = 2
-    #    print("walking!")
-    # if keyboard.is_pressed('3'):
-    #     state=3
-    #     print("backwards!")
+    if key=='1':
+       state=1
+       print("standing")
+    if key=='2':
+       state = 2
+       print("walking!")
+    if key=='3':
+        state=3
+        print("backwards!")
 
     # output of state machine
     if(state==1):

@@ -156,15 +156,15 @@ while key != ord('q'):
     key = stdscr.getch()
     stdscr.addch(20,25,key)
     stdscr.refresh()
-    print key
+    
 
-    if key=='1':
+    if key==ord('1'):
        state=1
        print("standing")
-    if key=='2':
+    if key==ord('2'):
        state = 2
        print("walking!")
-    if key=='3':
+    if key==ord('3'):
         state=3
         print("backwards!")
 

@@ -155,6 +155,7 @@ p = 0
 while True:
     setHips(90)
     key = getch()
+    print key
 
     if key=='1':
        state=1

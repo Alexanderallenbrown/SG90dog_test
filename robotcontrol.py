@@ -6,7 +6,7 @@ stdscr.keypad(1)
 
 stdscr.addstr(0,10,"Hit 'q' to quit")
 stdscr.refresh()
-
+stdscr.timeout(1)
 key = ''
 
 from smbus import SMBus

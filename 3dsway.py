@@ -73,7 +73,7 @@ while True:
     x = amp*sin(freq*t)
     y = 0
     z = 0
-    flfem,fltib,frhip = flLeg.servoAngles(x,y,z)
+    flfem,fltib,flhip = flLeg.servoAngles(x,y,z)
     frfem,frtib,frhip = frLeg.servoAngles(x,y,z)
     lrfem,lrtib,lrhip = lrLeg.servoAngles(x,y,z)
     rrfem,rrtib,rrhip = rrLeg.servoAngles(x,y,z)

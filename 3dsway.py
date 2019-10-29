@@ -71,13 +71,24 @@ while True:
     #setHips(90)
     t = time.time()-starttime
     print t
-    x = amp*sin(freq*t)
-    y = amp*sin(freq*t)
-    z = 0
-    flfem,fltib,flhip = flLeg.servoAngles(x,y,z)
-    frfem,frtib,frhip = frLeg.servoAngles(x,y,z)
-    lrfem,lrtib,lrhip = lrLeg.servoAngles(x,y,z)
-    rrfem,rrtib,rrhip = rrLeg.servoAngles(x,y,z)
+    xfl = amp*sin(freq*t)
+    yfl = amp*sin(freq*t)
+    zfl = 0
+    xfr = amp*sin(freq*t)
+    yfr = -amp*sin(freq*t)
+    zfr = 0
+    xlr = amp*sin(freq*t)
+    ylr = amp*sin(freq*t)
+    zlr = 0
+    xrr = amp*sin(freq*t)
+    yrr = -amp*sin(freq*t)
+    zrr = 0
+
+
+    flfem,fltib,flhip = flLeg.servoAngles(xfl,yfl,zfl)
+    frfem,frtib,frhip = frLeg.servoAngles(xfr,yfr,zfr)
+    lrfem,lrtib,lrhip = lrLeg.servoAngles(xlr,ylr,zlr)
+    rrfem,rrtib,rrhip = rrLeg.servoAngles(xrr,yrr,zrr)
 
     # setLeg(frfem,frtib,0)
     # setLeg(flfem,fltib,2)

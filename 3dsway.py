@@ -104,10 +104,10 @@ def doStompL(freq,amp,t):
     xfr = 0#amp*sin(freq*t)
     yfr = -amp
     zfr = 0
-    xlr = amp#amp*sin(freq*t)
+    xlr = -amp#amp*sin(freq*t)
     ylr = -amp
     zlr = 0
-    xrr = amp#amp*sin(freq*t)
+    xrr = -amp#amp*sin(freq*t)
     yrr = amp
     zrr = 0
     return xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr

@@ -70,16 +70,16 @@ starttime = time.time()
 
 def doSway(freq,amp,t):
     xfl = 0#amp*sin(freq*t)
-    yfl = -amp*sin(freq*t)
+    yfl = -amp*sin(.5*freq*t)
     zfl = 0
     xfr = 0#amp*sin(freq*t)
-    yfr = amp*sin(freq*t)
+    yfr = amp*sin(.5*freq*t)
     zfr = 0
     xlr = 0#amp*sin(freq*t)
-    ylr = -amp*sin(freq*t)
+    ylr = amp*sin(.5*freq*t)
     zlr = 0
     xrr = 0#amp*sin(freq*t)
-    yrr = amp*sin(freq*t)
+    yrr = -amp*sin(.5*freq*t)
     zrr = 0
     return xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr
 
@@ -119,6 +119,7 @@ while True:
     # print t
     beats = int(2*pi/freq*t)
     measures = int(beats/4)
+    print beats, measures
 
     if (measures%2)==0:
         xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)

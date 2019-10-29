@@ -70,6 +70,7 @@ starttime = time.time()
 while True:
     #setHips(90)
     t = time.time()-starttime
+    print t
     x = amp*sin(freq*t)
     y = 0
     z = 0
@@ -84,9 +85,9 @@ while True:
     # setLeg(rrfem,rrtib,6)
 
     setLeg3d(frfem,frtib,frhip,0,8)
-    setLeg3d(flfem,fltib,flhip,0,9)
-    setLeg3d(lrfem,lrtib,lrhip,0,10)
-    setLeg3d(rrfem,rrtib,rrhip,0,11)
+    setLeg3d(flfem,fltib,flhip,2,9)
+    setLeg3d(lrfem,lrtib,lrhip,4,10)
+    setLeg3d(rrfem,rrtib,rrhip,6,11)
 
     time.sleep(.01)
 

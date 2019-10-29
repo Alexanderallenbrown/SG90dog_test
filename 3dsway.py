@@ -100,8 +100,8 @@ def doBump(freq,amp,t):
 
 def doStompL(freq,amp,t):
     xfl = 0#amp*sin(freq*t)
-    yfl = amp*cos(freq*t)
-    zfl = amp*sin(2*freq*t)
+    yfl = amp*cos(.5*freq*t)
+    zfl = amp*sin(freq*t)
     xfr = 0#amp*sin(freq*t)
     yfr = -2*amp
     zfr = amp
@@ -117,8 +117,13 @@ while True:
     #setHips(90)
     t = time.time()-starttime
     # print t
-    
-    xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)
+    beats = int(2*pi/freq*t)
+    measures = int(beats/4)
+
+    if (measures%2)==0:
+        xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)
+    else:
+        xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doSway(freq,amp,t)
 
     flfem,fltib,flhip = flLeg.servoAngles(xfl,yfl,zfl)
     frfem,frtib,frhip = frLeg.servoAngles(xfr,yfr,zfr)

@@ -121,10 +121,13 @@ while True:
     measures = int(beats/4)
     print t,bpm/60.0,beats, measures
 
-    if (measures%2)==0:
+    if (measures%4)==0:
         xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)
-    else:
+    elif (measures%4)==1:
         xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doSway(freq,amp,t)
+    else:
+        xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doBump(freq,amp,t)
+
 
     flfem,fltib,flhip = flLeg.servoAngles(xfl,yfl,zfl)
     frfem,frtib,frhip = frLeg.servoAngles(xfr,yfr,zfr)

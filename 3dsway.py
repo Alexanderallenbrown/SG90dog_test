@@ -119,7 +119,7 @@ while True:
     # print t
     beats = int(t/(bpm/60.0))
     measures = int(beats/4)
-    print beats, measures
+    print t,bpm/60.0,beats, measures
 
     if (measures%2)==0:
         xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)

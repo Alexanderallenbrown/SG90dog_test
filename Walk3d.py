@@ -33,7 +33,7 @@ class Walk3d:
         frz = interp(pp,self.P,self.FR_z)
         flx = interp(pp,self.P,self.FL_x)
         fly = interp(pp,self.P,self.FL_y)
-        frz = interp(pp,self._,self.FL_z)
+        frz = interp(pp,self.P,self.FL_z)
         lrx = interp(pp,self.P,self.LR_x)
         lry = interp(pp,self.P,self.LR_y)
         lrz = interp(pp,self.P,self.LR_z)

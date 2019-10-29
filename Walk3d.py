@@ -64,10 +64,10 @@ def main():
 
     for k in range(0,len(vp)):
         fr[k,:],fl[k,:],lr[k,:],rr[k,:] = walker.getPos(vp[k])
-        flServo[k,:] = flLeg.servoAngles(fl[k,0],fl[k,1])
-        frServo[k,:] = frLeg.servoAngles(fr[k,0],fr[k,1])
-        lrServo[k,:] = lrLeg.servoAngles(lr[k,0],lr[k,1])
-        rrServo[k,:] = rrLeg.servoAngles(rr[k,0],rr[k,1])
+        flServo[k,:] = flLeg.servoAngles(fl[k,0],fl[k,1],fl[k,2])
+        frServo[k,:] = frLeg.servoAngles(fr[k,0],fr[k,1],fr[k,2])
+        lrServo[k,:] = lrLeg.servoAngles(lr[k,0],lr[k,1],lr[k,2])
+        rrServo[k,:] = rrLeg.servoAngles(rr[k,0],rr[k,1],rr[k,2])
 
 
     figure()

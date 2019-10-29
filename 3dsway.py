@@ -81,7 +81,7 @@ while True:
     ylr = amp*sin(freq*t)
     zlr = 0
     xrr = 0#amp*sin(freq*t)
-    yrr = amp*sin(freq*t)
+    yrr = -amp*sin(freq*t)
     zrr = 0
 
 

@@ -117,7 +117,7 @@ while True:
     #setHips(90)
     t = time.time()-starttime
     # print t
-    beats = int(2*pi/freq*t)
+    beats = int(t/(bpm/60.0))
     measures = int(beats/4)
     print beats, measures
 

@@ -4,7 +4,7 @@ from matplotlib.pyplot import *
 from Leg3d import Leg3d
 
 
-class Walk:
+class Walk3d:
     def __init__(self,stride_length=0.02,stride_height=-0.01):
         self.stride_height = stride_height
         self.stride_length = stride_length

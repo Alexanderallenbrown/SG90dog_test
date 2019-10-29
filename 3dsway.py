@@ -63,7 +63,7 @@ rrLeg = Leg3d(side=1)
 # walker = Walk3d(stride_height=-0.01,stride_length =.02)
 
 p = 0
-freq = 2*pi
+freq = 1.75*pi
 amp = 0.01
 starttime = time.time()
 
@@ -78,10 +78,10 @@ while True:
     yfr = -amp*sin(freq*t)
     zfr = 0
     xlr = amp*sin(freq*t)
-    ylr = amp*sin(freq*t)
+    ylr = -amp*sin(freq*t)
     zlr = 0
     xrr = amp*sin(freq*t)
-    yrr = -amp*sin(freq*t)
+    yrr = amp*sin(freq*t)
     zrr = 0
 
 

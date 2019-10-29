@@ -72,7 +72,7 @@ while True:
     t = time.time()-starttime
     print t
     x = amp*sin(freq*t)
-    y = 0
+    y = amp*sin(freq*t)
     z = 0
     flfem,fltib,flhip = flLeg.servoAngles(x,y,z)
     frfem,frtib,frhip = frLeg.servoAngles(x,y,z)

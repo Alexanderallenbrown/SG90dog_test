@@ -63,7 +63,7 @@ rrLeg = Leg3d(side=1)
 # walker = Walk3d(stride_height=-0.01,stride_length =.02)
 
 p = 0
-freq = 1.2*pi
+freq = 1.1*pi
 amp = 0.015
 starttime = time.time()
 

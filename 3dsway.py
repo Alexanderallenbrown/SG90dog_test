@@ -71,16 +71,16 @@ while True:
     #setHips(90)
     t = time.time()-starttime
     print t
-    xfl = amp*sin(freq*t)
+    xfl = 0#amp*sin(freq*t)
     yfl = amp*sin(freq*t)
     zfl = 0
-    xfr = amp*sin(freq*t)
+    xfr = 0#amp*sin(freq*t)
     yfr = -amp*sin(freq*t)
     zfr = 0
-    xlr = amp*sin(freq*t)
-    ylr = -amp*sin(freq*t)
+    xlr = 0#amp*sin(freq*t)
+    ylr = amp*sin(freq*t)
     zlr = 0
-    xrr = amp*sin(freq*t)
+    xrr = 0#amp*sin(freq*t)
     yrr = amp*sin(freq*t)
     zrr = 0
 

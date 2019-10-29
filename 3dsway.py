@@ -67,10 +67,7 @@ freq = 1.1*pi
 amp = 0.015
 starttime = time.time()
 
-while True:
-    #setHips(90)
-    t = time.time()-starttime
-    # print t
+def doSway(freq,amp,t):
     xfl = 0#amp*sin(freq*t)
     yfl = amp*sin(freq*t)
     zfl = 0
@@ -83,7 +80,44 @@ while True:
     xrr = 0#amp*sin(freq*t)
     yrr = amp*sin(freq*t)
     zrr = 0
+    return xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr
 
+def doBump(freq,amp,t):
+    xfl = 0#amp*sin(freq*t)
+    yfl = 0
+    zfl = amp*sin(freq*t)
+    xfr = 0#amp*sin(freq*t)
+    yfr = 0
+    zfr = amp*sin(freq*t)
+    xlr = 0#amp*sin(freq*t)
+    ylr = 0
+    zlr = amp*sin(freq*t)
+    xrr = 0#amp*sin(freq*t)
+    yrr = 0
+    zrr = amp*sin(freq*t)
+    return xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr
+
+def doStompL(freq,amp,t):
+    xfl = 0#amp*sin(freq*t)
+    yfl = 0
+    zfl = amp*sin(2*freq*t)
+    xfr = 0#amp*sin(freq*t)
+    yfr = -amp
+    zfr = 0
+    xlr = 0#amp*sin(freq*t)
+    ylr = -amp
+    zlr = 0
+    xrr = 0#amp*sin(freq*t)
+    yrr = amp
+    zrr = 0
+    return xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr
+
+while True:
+    #setHips(90)
+    t = time.time()-starttime
+    # print t
+    
+    xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)
 
     flfem,fltib,flhip = flLeg.servoAngles(xfl,yfl,zfl)
     frfem,frtib,frhip = frLeg.servoAngles(xfr,yfr,zfr)

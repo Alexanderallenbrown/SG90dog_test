@@ -99,10 +99,10 @@ def doBump(freq,amp,t):
 
 def doStompL(freq,amp,t):
     xfl = 0#amp*sin(freq*t)
-    yfl = amp*sin(freq*t)
+    yfl = amp*cos(freq*t)
     zfl = amp*sin(2*freq*t)
     xfr = 0#amp*sin(freq*t)
-    yfr = amp
+    yfr = -amp
     zfr = 0
     xlr = 0#amp*sin(freq*t)
     ylr = -amp

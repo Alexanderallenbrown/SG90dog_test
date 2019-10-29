@@ -63,14 +63,14 @@ rrLeg = Leg3d(side=1)
 # walker = Walk3d(stride_height=-0.01,stride_length =.02)
 
 p = 0
-freq = 1*pi
+freq = 1.2*pi
 amp = 0.01
 starttime = time.time()
 
 while True:
     #setHips(90)
     t = time.time()-starttime
-    print t
+    # print t
     xfl = 0#amp*sin(freq*t)
     yfl = amp*sin(freq*t)
     zfl = 0

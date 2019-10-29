@@ -69,10 +69,10 @@ starttime = time.time()
 
 def doSway(freq,amp,t):
     xfl = 0#amp*sin(freq*t)
-    yfl = amp*sin(freq*t)
+    yfl = -amp*sin(freq*t)
     zfl = 0
     xfr = 0#amp*sin(freq*t)
-    yfr = -amp*sin(freq*t)
+    yfr = amp*sin(freq*t)
     zfr = 0
     xlr = 0#amp*sin(freq*t)
     ylr = -amp*sin(freq*t)
@@ -103,7 +103,7 @@ def doStompL(freq,amp,t):
     zfl = amp*sin(2*freq*t)
     xfr = 0#amp*sin(freq*t)
     yfr = -2*amp
-    zfr = 0
+    zfr = amp
     xlr = -amp#amp*sin(freq*t)
     ylr = -2*amp
     zlr = 0

@@ -64,7 +64,7 @@ rrLeg = Leg3d(side=1)
 
 p = 0
 freq = 1.2*pi
-amp = 0.01
+amp = 0.015
 starttime = time.time()
 
 while True:

@@ -71,16 +71,16 @@ starttime = time.time()
 def doSit(freq,amp,t):
     xfl = .01#amp*sin(freq*t)
     yfl = 0
-    zfl = .02
+    zfl = .03
     xfr = .01#amp*sin(freq*t)
     yfr = 0
-    zfr = .02
+    zfr = .03
     xlr = -.025#amp*sin(freq*t)
     ylr = 0
-    zlr = -.02
+    zlr = -.03
     xrr = -.025#amp*sin(freq*t)
     yrr = 0
-    zrr = -.02
+    zrr = -.03
     return xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr
 
 

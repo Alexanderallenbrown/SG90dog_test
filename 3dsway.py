@@ -77,10 +77,10 @@ def doSit(freq,amp,t):
     zfr = .02
     xlr = -.025#amp*sin(freq*t)
     ylr = 0
-    zlr = .02
+    zlr = -.02
     xrr = -.025#amp*sin(freq*t)
     yrr = 0
-    zrr = .02
+    zrr = -.02
     return xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr
 
 

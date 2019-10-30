@@ -51,7 +51,12 @@ class Leg3d:
             opthlt = 1.0*opthlt/abs(opthlt)
         thlt = arccos(opthlt)
         self.thf_raw = thleg+thlt
-        thd = arccos((self.lt**2+self.lf**2-d**2)/(2*self.lt*self.lf))
+        opthd = (self.lt**2+self.lf**2-d**2)/(2*self.lt*self.lf)
+        if(abs(opthd)>=1):
+            opthd=1*opthd/abs(opthd)
+            print "warning... thd out of bounds for xrel: "+str(xrel)+" and zrel: "+str(zrel)
+        thd = arccos(opthd)
+
         self.tht_raw = pi-thd
         return self.thf_raw,self.tht_raw,self.thh_raw
 

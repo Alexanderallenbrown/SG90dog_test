@@ -138,13 +138,13 @@ while True:
     print t,bpm/60.0,beats, measures
 
 
-    xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doSit(freq,amp,t)
-    # if (measures%4)==0:
-    #     xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)
-    # elif (measures%4)==1:
-    #     xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doSway(freq,amp,t)
-    # else:
-    #     xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doBump(freq,amp,t)
+    # xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doSit(freq,amp,t)
+    if (measures%4)==0:
+        xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)
+    elif (measures%4)==1:
+        xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doSway(freq,amp,t)
+    else:
+        xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doBump(freq,amp,t)
 
 
     flfem,fltib,flhip = flLeg.servoAngles(xfl,yfl,zfl)

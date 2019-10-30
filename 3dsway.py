@@ -68,6 +68,22 @@ freq = bpm/60.*2*pi
 amp = 0.015
 starttime = time.time()
 
+def doSit(freq,amp,t):
+    xfl = 1#amp*sin(freq*t)
+    yfl = 0
+    zfl = 2.5
+    xfr = 1#amp*sin(freq*t)
+    yfr = 0
+    zfr = 2.5
+    xlr = -2.5#amp*sin(freq*t)
+    ylr = 0
+    zlr = 2
+    xrr = -2.5#amp*sin(freq*t)
+    yrr = 0
+    zrr = 2
+    return xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr
+
+
 def doSway(freq,amp,t):
     xfl = 0#amp*sin(freq*t)
     yfl = -amp*sin(.5*freq*t)
@@ -121,12 +137,14 @@ while True:
     measures = int(beats/4)
     print t,bpm/60.0,beats, measures
 
-    if (measures%4)==0:
-        xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)
-    elif (measures%4)==1:
-        xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doSway(freq,amp,t)
-    else:
-        xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doBump(freq,amp,t)
+
+    xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doSit(freq,amp,t)
+    # if (measures%4)==0:
+    #     xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)
+    # elif (measures%4)==1:
+    #     xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doSway(freq,amp,t)
+    # else:
+    #     xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doBump(freq,amp,t)
 
 
     flfem,fltib,flhip = flLeg.servoAngles(xfl,yfl,zfl)

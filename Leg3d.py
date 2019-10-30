@@ -45,7 +45,11 @@ class Leg3d:
 
         d = sqrt(zp**2+x**2)
         thleg = arctan2(zp,x)
-        thlt = arccos((d**2+self.lf**2-self.lt**2)/(2*d*self.lf))
+        opthlt = (d**2+self.lf**2-self.lt**2)/(2*d*self.lf)
+        print "warning! out of bounds"
+        if(abs(opthlt)>=1):
+            opthlt = 1.0*opthlt/abs(opthlt)
+        thlt = arccos()
         self.thf_raw = thleg+thlt
         thd = arccos((self.lt**2+self.lf**2-d**2)/(2*self.lt*self.lf))
         self.tht_raw = pi-thd

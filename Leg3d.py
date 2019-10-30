@@ -49,7 +49,7 @@ class Leg3d:
         print "warning! out of bounds"
         if(abs(opthlt)>=1):
             opthlt = 1.0*opthlt/abs(opthlt)
-        thlt = arccos()
+        thlt = arccos(opthlt)
         self.thf_raw = thleg+thlt
         thd = arccos((self.lt**2+self.lf**2-d**2)/(2*self.lt*self.lf))
         self.tht_raw = pi-thd

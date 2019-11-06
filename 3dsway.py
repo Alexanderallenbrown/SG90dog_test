@@ -210,13 +210,13 @@ while True:
     zamp = 0.005
     yamp = 0.01
 
-    xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doTurn(freq*.3,yamp,2*zamp,t)
-    # if (measures%4)==0:
-    #     xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)
-    # elif (measures%4)==1:
-    #     xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doSway(freq,amp,t)
-    # else:
-    #     xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doBump(freq,amp,t)
+    #xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doTurn(freq*.3,yamp,2*zamp,t)
+    if (measures%4)==0:
+        xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)
+    elif (measures%4)==1:
+        xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doSway(freq,amp,t)
+    else:
+        xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doBump(freq,amp,t)
 
 
     flfem,fltib,flhip = flLeg.servoAngles(xfl,yfl,zfl)

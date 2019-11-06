@@ -71,9 +71,9 @@ starttime = time.time()
 
 def doTurn(freq,yamp,zamp,t):
     phifr = 0
-    philr = pi/2
+    philr = 3*pi/2
     phifl = pi
-    phirr = 3*pi/2
+    phirr = 1*pi/2
     yfl = -yamp*sin(freq*t+phifl)
     xfl = 0
     zfl = zamp*cos(freq*t+phifl)

@@ -71,10 +71,10 @@ starttime = time.time()
 def doDown(freq,amp,t):
     xfl = .01#amp*sin(freq*t)
     yfl = 0
-    zfl = .025
+    zfl = -.025
     xfr = .01#amp*sin(freq*t)
     yfr = 0
-    zfr = .025
+    zfr = -.025
     xlr = -.025#amp*sin(freq*t)
     ylr = 0
     zlr = -.025

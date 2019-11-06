@@ -80,10 +80,10 @@ def doTurn(freq,yamp,zamp,t):
     yfr = yamp*sin(freq*t+phifr)
     xfr = 0
     zfr = zamp*cos(freq*t+phifr)
-    ylr = yamp*sin(freq*t+philr)
+    ylr = -yamp*sin(freq*t+philr)
     xlr = 0
     zlr = zamp*cos(freq*t+philr)
-    yrr = -yamp*sin(freq*t+phirr)
+    yrr = yamp*sin(freq*t+phirr)
     xrr = 0
     zrr = zamp*cos(freq*t+phirr)
     return xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr

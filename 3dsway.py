@@ -69,6 +69,25 @@ amp = 0.015
 starttime = time.time()
 
 
+def doTurn(freq,yamp,zamp,t):
+    phifr = 0
+    philr = pi/2
+    phifl = pi
+    phirr = 3*pi/2
+    yfl = -yamp*sin(freq*t+phifl)
+    xfl = 0
+    zfl = zamp*cos(freq*t+phifl)
+    yfr = yamp*sin(freq*t+phifr)
+    xfr = 0
+    zfr = zamp*cos(freq*t+phifr)
+    ylr = yamp*sin(freq*t+philr)
+    xlr = 0
+    zlr = zamp*cos(freq*t+philr)
+    yrr = -yamp*sin(freq*t+phirr)
+    xrr = 0
+    zrr = zamp*cos(freq*t+phirr)
+    return xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr
+
 def doWalk(freq,xamp,zamp,t):
     phifr = 0
     philr = pi/2
@@ -187,10 +206,11 @@ while True:
     measures = int(beats/4)
     print t,bpm/60.0,beats, measures
 
-    xamp = -0.01
+    xamp = 0.01
     zamp = 0.005
+    yamp = 0.01
 
-    xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doWalk(freq,xamp,zamp,t)
+    xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doTurn(freq,yamp,zamp,t)
     # if (measures%4)==0:
     #     xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)
     # elif (measures%4)==1:

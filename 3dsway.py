@@ -187,7 +187,7 @@ while True:
     measures = int(beats/4)
     print t,bpm/60.0,beats, measures
 
-    xamp = 0.01
+    xamp = -0.01
     zamp = 0.005
 
     xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doWalk(freq,xamp,zamp,t)

@@ -210,7 +210,7 @@ while True:
     zamp = 0.005
     yamp = 0.01
 
-    xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doTurn(freq,yamp,1.5*zamp,t)
+    xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doTurn(freq*.3,yamp,1.5*zamp,t)
     # if (measures%4)==0:
     #     xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)
     # elif (measures%4)==1:

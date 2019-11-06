@@ -153,7 +153,7 @@ while True:
     print t,bpm/60.0,beats, measures
 
 
-    xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doSit(freq,amp,t)
+    xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doDown(freq,amp,t)
     # if (measures%4)==0:
     #     xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)
     # elif (measures%4)==1:

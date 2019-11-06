@@ -76,16 +76,16 @@ def doWalk(freq,xamp,zamp,t):
     phirr = 3*pi/2
     xfl = xamp*sin(freq*t+phifl)
     yfl = 0
-    zfl = zamp*sin(freq*t+phifl)
+    zfl = zamp*cos(freq*t+phifl)
     xfr = xamp*sin(freq*t+phifr)
     yfr = 0
-    zfr = zamp*sin(freq*t+phifr)
+    zfr = zamp*cos(freq*t+phifr)
     xlr = xamp*sin(freq*t+philr)
     ylr = 0
-    zlr = zamp*sin(freq*t+philr)
+    zlr = zamp*cos(freq*t+philr)
     xrr = xamp*sin(freq*t+phirr)
     yrr = 0
-    zrr = zamp*sin(freq*t+phirr)
+    zrr = zamp*cos(freq*t+phirr)
     return xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr
 
 def doStand(freq,amp,t):

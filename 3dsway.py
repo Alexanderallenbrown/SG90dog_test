@@ -68,6 +68,41 @@ freq = bpm/60.*2*pi
 amp = 0.015
 starttime = time.time()
 
+
+def doWalk(freq,xamp,zamp,t):
+    phifr = 0
+    philr = pi/2
+    phifl = pi
+    phirr = 3*pi/2
+    xfl = xamp*sin(freq*t+phifl)
+    yfl = 0
+    zfl = zamp*sin(freq*t+phifl)
+    xfr = xamp*sin(freq*t+phifr)
+    yfr = 0
+    zfr = zamp*sin(freq*t+phifr)
+    xlr = xamp*sin(freq*t+philr)
+    ylr = 0
+    zlr = zamp*sin(freq*t+philr)
+    xrr = xamp*sin(freq*t+phirr)
+    yrr = 0
+    zrr = zamp*sin(freq*t+phirr)
+    return xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr
+
+def doStand(freq,amp,t):
+    xfl = 0#amp*sin(freq*t)
+    yfl = 0
+    zfl = 0
+    xfr = .00#amp*sin(freq*t)
+    yfr = 0
+    zfr = 0
+    xlr = 0#amp*sin(freq*t)
+    ylr = 0
+    zlr = 0
+    xrr = 0#amp*sin(freq*t)
+    yrr = 0
+    zrr = 0
+    return xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr
+
 def doDown(freq,amp,t):
     xfl = .01#amp*sin(freq*t)
     yfl = 0
@@ -152,8 +187,10 @@ while True:
     measures = int(beats/4)
     print t,bpm/60.0,beats, measures
 
+    xamp = 0.01
+    zamp = 0.01
 
-    xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doDown(freq,amp,t)
+    xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doWalk(freq,xamp,zamp,t)
     # if (measures%4)==0:
     #     xfl,yfl,zfl,xfr,yfr,zfr,xlr,ylr,zlr,xrr,yrr,zrr = doStompL(freq,amp,t)
     # elif (measures%4)==1:
